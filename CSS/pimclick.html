@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pimclick</title>
+    <style>
+        body{
+            background-image: url("pic/Screenshot\ 144747.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: sans-serif;
+        }
+        p{
+            color: white;
+            text-align: center;
+            margin: auto;
+            font-size: 3em;
+        }
+        form{
+            width: 90%;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: auto;
+            display: block;
+            max-width: 800px;
+        }
+        span{
+            font-size: 24px;
+        }
+        .send{
+            border-radius: 10px;
+            background-color: red;
+            padding: 7px 30px;
+            border-style: none;
+            color: white;
+            font: bold;
+            width: 8em;
+        }
+        div{
+            padding: 10px;
+            margin: auto;
+        }
+        textarea, input{
+            width: 90%;
+            border-radius: 10px;
+            border: lightgray 1px solid;
+            padding: 12px;
+        }
+        .center{
+            display: block;
+            padding: 5px;
+            text-align: center;
+        }
+        .row{
+            text-align: left;
+        }
+        .move{
+            display: inline-block;
+        }
+        @media (min-width:480px){
+            .move{width: 96%;}
+        }
+        @media (min-width:769px){
+            .move{width: 44.5%;}
+        }
+    </style>
+</head>
+<body>
+    <br><br>
+    <p><b>pimclick</b></p>
+    <p style="letter-spacing: -4px;">creative digital agency</p>
+    <div class="form">
+        <form>
+            <div class="center">
+            <span>Contact us </span><span style="color: red;">today</span>
+            <br>
+            </div>
+            
+            <div class="row">
+                <div class="move">
+                    <label for="name">Your Name (required)</label><br>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="move">
+                    <label for="email">Your Email (required)</label><br>
+                    <input type="email" name="email" required>
+                </div>
+                
+                <div>
+                    <label for="subject">Subject</label><br>
+                    <input type="text" name="subject">
+                </div>
+                <div>
+                    <label for="message">Your Message</label><br>
+                    <textarea name="message" rows="4"></textarea>
+                </div>
+                <div class="center">
+                    <input type="submit" value="SEND" class="send">
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</body>
+</html>

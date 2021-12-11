@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 150px;
+        }
+        tr:first-child{
+            margin-right: 20px;
+            height: 1em;
+        }
+        th{
+            border-top: 1px solid;
+            color:grey; 
+            font-size: smaller; 
+            background-color:lightgray;
+            text-align: left;
+            height: 2em;
+        }
+        td{
+            margin: 20px;
+        }
+        div{
+            width: 150px;
+            display: inline-block;
+        }
+        .required:after{
+            content: "*";
+            color: red;
+        }   
+    </style>
+</head>
+<body>
+    <form action="/action_page.php">
+        <table>
+            <tr>
+                <td><label for="name" class="required">Name </label>:</td>
+                <td><input type="text" name="name" class="box" required></td>
+            </tr>
+            <tr>
+                <td><label for="tabText" class="required">Tab Text </label>:</td>
+                <td><input type="text" name="tabText" class="box" required></td>
+            </tr>
+            <tr>
+                <td><label for="url" class="required">URL </label>:</td>
+                <td>http://www.wizehive.com/webform/<input type="text" name="name" required></td>
+            </tr>
+
+            <th colspan="2">FORM SETUP</th>
+            <tr>
+                <td><label for="form">Form:</label></td>
+                <td>
+                    <select name="form" class="box"></select>
+                    <button name="edit">Edit</button>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="logo">Logo:</label></td>
+                <td>
+                    <div><span>no logo uploaded</span></div>
+                    <button name="upLogo">Upload Logo</button>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="templateText">Template Text:</label></td>
+                <td>
+                    <select name="templateText" class="box">
+                        <option value="English">English</option>
+                        <option value="Thai">Thai</option>
+                    </select>
+                    <button name="edit">Edit</button>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="reviewForm">Review Form:</label></td>
+                <td>
+                    <select name="reviewForm" class="box">
+                        <option value="default">Default</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="reviewScore">Review Score:</label></td>
+                <td>
+                    <select name="reviewScore" class="box">
+                        <option selected="Rating">Rating</option>
+                    </select>
+                    <button name="reload">Reload Fields</button>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="scoreingType">Scoring Type:</label></td>
+                <td>
+                    <select name="scoreingType">
+                        <option selected="average">Average</option>
+                        <option value="max">Max</option>
+                        <option value="min">Min</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="maxScore">Max Score:</label></td>
+                <td>
+                    <input name="maxScore" value="4.00">
+                </td>
+            </tr>
+            <!-- <tr><td><button name="summit">Submit</button></td></tr> -->
+        </table>
+    </form>
+</body>
+</html>

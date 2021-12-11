@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <style>
+        body{
+            padding-top: 1em;
+        }
+        .search{
+            background-color:rgb(231, 231, 231);
+            height: 3.5em;
+            width: 100%;
+            padding-left: 10px;
+            border-top: lightgray solid 1px;
+        }
+        table{
+            border-collapse: collapse;
+            padding-left: 10em;
+            margin: auto;
+            border: 1px solid orangered;
+        }
+        .two{
+            padding: 10px 10px;
+        }
+        .forth{
+            width: 4em;
+            border-radius: 5px;
+            height: 18px;
+        }
+        select{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <td colspan="2" class="two">
+                    <label for="flyFrom"><b>Flying from</b></label><br>
+                    <select name="flyFrom">
+                        <option selected="selected"></option>
+                        <option value="north">North</option>
+                        <option value="south">South</option>
+                        <option value="east">East</option>
+                        <option value="west">West</option>
+                    </select>
+                </td>
+                <td colspan="2" class="two">
+                    <label for="to"><b>To</b></label><br>
+                    <select name="to">
+                    <option selected="selected"></option>
+                    <option value="north">North</option>
+                    <option value="south">South</option>
+                    <option value="east">East</option>
+                    <option value="west">West</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"class="two">
+                    <label for="depart"><b>Departing</b></label>
+                    <br><input type="date">
+                </td>
+                <td colspan="2"class="two">
+                    <label for="return"><b>Returning</b></label>
+                    <br><input type="date">
+                </td>
+            </tr>
+            <tr>
+                <td class="two">
+                    <label for="adult"><b>Adult</b></label><br>
+                    <input type="number" value="1" class="forth">
+                </td>
+                <td class="two">
+                    <label for="child"><b>Child</b></label><br>
+                    <input type="number" placeholder="0" class="forth">
+                </td>
+                <td class="two">
+                    <label for="infant"><b>Infant</b></label><br>
+                    <input type="number" placeholder="0" class="forth">
+                </td>
+                <td class="two">
+                    <label for="currency" style="color: orangered;"><b>Currency</b></label><br>
+                    <select class="forth">
+                        <option value="thb">THB</option>
+                        <option value="usd">USD</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="search">
+                    <input type="submit" value="SEARCH" 
+                    style="background-color:orangered; color: white; padding: 10px; 
+                    width:7em; border-radius: 8px; border-width: 1px;">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,5 +1,0 @@
-id,date,customer,total,visit,tele,admit,other,amount,createdAt,updatedAt,recorder
-1,28-Mar-2022,0,0,NULL,NULL,NULL,.,1,"2022-03-29 13:07:52","2022-03-29 13:07:52",NULL
-2,29-Mar-2022,1,0,NULL,NULL,NULL,test,NULL,"2022-03-29 13:10:11","2022-03-29 13:10:11",NULL
-3,31-Mar-2022,1,0,NULL,NULL,NULL,test,1,"2022-04-01 15:30:53","2022-04-01 15:30:53",NULL
-4,1-Apr-2022,1,0,1,1,1,..,1,"2022-04-01 15:34:44","2022-04-01 15:50:15",NULL

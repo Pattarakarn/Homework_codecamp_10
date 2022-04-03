@@ -1,4 +1,0 @@
-id,date,customer,total,ekg,abi,holter,event,abp,echo,echo3D,tee,est,stress,dobu,bicycle,tilt,other,amount,createdAt,updatedAt,recorder
-1,26-Mar-2022,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,test,1,"2022-03-27 06:15:52","2022-03-29 14:58:35",nn
-3,28-Mar-2022,0,3,1,0,0,0,0,0,1,0,0,0,1,0,0,NULL,0,"2022-03-29 14:46:06","2022-03-29 14:59:02",nn
-4,29-Mar-2022,0,7,1,0,1,0,1,0,1,0,1,0,1,0,1,NULL,0,"2022-03-30 15:43:19","2022-03-30 16:24:14",cc

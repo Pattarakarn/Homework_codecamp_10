@@ -1,0 +1,6 @@
+id,username,password,code,createdAt,updatedAt
+1,or,$2a$12$ENMKvtk48WH7worYy6MiKeqfQmZQRMkiOMZSzycnnkxjzQXzyJy4u,OR,"2022-03-26 04:59:58","2022-03-26 04:59:58"
+2,nn,$2a$12$Z3haqR0Js5GQ3/vuk3VCEOqmgerRnJRuSIQGWAFgUOdL7YumMo8ki,Non-invasive,"2022-03-26 08:24:18","2022-03-26 08:24:18"
+3,cc,$2a$12$t2p//duulzxKfEdK0jwtWefNh3r/g.QuvOp.gk1e7dnzZBZMwf0ie,Cath-Lab,"2022-03-26 10:20:33","2022-03-26 10:20:33"
+4,00,$2a$12$hG1gxvSMBFHSc.TBQPowleIy12asOBBdubIiyrqd3zBH0Lg9toE4m,OPD,"2022-03-28 15:29:09","2022-03-28 15:29:09"
+5,up,$2a$12$m9SBjLuGa09/8KUDpcwwp./IMAvoa3znBAfzmuxFKd6wXQmSclYC2,Supervisor,"2022-03-29 15:06:52","2022-03-29 15:06:52"

@@ -45,14 +45,10 @@ export default function OpdForm() {
                 icon: <ExclamationCircleOutlined />,
                 content: (Date),
                 onOk() {
-                    // "StudentId":nextSequence("SID")
-                    // axios.post("/opdlist", ({"_id": getNextSequence("item_id"), values }));
                     axios.post("/opdlist", value);
                     fetchRecord();
-                    console.log('บันทึก');
                 },
                 onCancel() {
-                    console.log('ยกเลิก');
                 },
             });
         } else if (dateRec == date) {
@@ -77,7 +73,6 @@ export default function OpdForm() {
     })
 
     const option = [{ value: Date }, { value: date }]
-    const [show, display] = useState('')
 
     const alert = (
         <Alert
@@ -98,7 +93,7 @@ export default function OpdForm() {
     return (
         <div className="site-layout-content">
             <Form form={form} onFinish={onFinish} autoComplete="off" >
-                <Form.Item name='date'>
+                <Form.Item name='date' rules={[{ required: true, message: 'Please select' }]}>
                     <Select placeholder='เลือกวันที่บันทึก'
                         options={option}
                         style={{ width: '10em' }}
@@ -109,44 +104,33 @@ export default function OpdForm() {
                 {Opt.includes(dateRec) ?
                     alert
                     :
-                    <div style={{ display: show }}>
-                        <Row>
-                            <Col span={9} offset={7}>
-                                <Form.Item name="customer" label='ผู้เข้ารับบริการ (ราย)' style={{ paddingLeft: '30px' }}>
-                                    <InputNumber min={0}
-                                        style={{
-                                            width: '6em', textAlign: 'center', paddingLeft: '22px',
-                                            color: 'deeppink', borderTop: 'none', borderLeft: 'none', borderRight: 'none'
-                                        }}
-                                        value={customer}
-                                        onChange={(e) => { inputCustomer(e); }}
-                                        required
-                                    />
-                                </Form.Item>
-                            </Col>
-                        </Row>
-
-
-                        <Col span={12} offset={6}>
+                    <div>
+                        <Col span={9} offset={7}>
+                            <Form.Item name="customer" label='ผู้เข้ารับบริการ (ราย)' style={{ paddingLeft: '30px' }}>
+                                <InputNumber min={0}
+                                    style={{
+                                        width: '6em', textAlign: 'center', paddingLeft: '22px',
+                                        color: 'deeppink', borderTop: 'none', borderLeft: 'none', borderRight: 'none'
+                                    }}
+                                    value={customer}
+                                    onChange={(e) => { inputCustomer(e); }}
+                                    required
+                                />
+                            </Form.Item>
                             <Row>
-                                <Select open='' style={{ width: '100px', cursor: 'unset' }} value='Visit' >
-                                </Select>
-                                {/* <InputNumber  addonBefore={prefixSelector} defaultValue="0" min="0"
-                                    style={{width:'20em'}}/> */}
+                                <Button style={{ width: '100px', cursor: 'unset' }}>Visit</Button>
                                 <Form.Item name='visit'>
                                     <InputNumber min='0' style={{ width: 'auto' }} />
                                 </Form.Item>
                             </Row>
                             <Row>
-                                <Select open='' style={{ width: '100px', cursor: 'unset' }} value='Tele-med'>
-                                </Select>
+                                <Button style={{ width: '100px', cursor: 'unset' }}>Tele-med</Button>
                                 <Form.Item name='tele'>
                                     <InputNumber min='0' style={{ width: 'auto' }} />
                                 </Form.Item>
                             </Row>
                             <Row>
-                                <Select open='' style={{ width: '100px', cursor: 'unset' }} value='Admit'>
-                                </Select>
+                                <Button style={{ width: '100px', cursor: 'unset' }}>Admit</Button>
                                 <Form.Item name='admit' >
                                     <InputNumber min='0' style={{ width: 'auto' }} />
                                 </Form.Item>
@@ -157,7 +141,7 @@ export default function OpdForm() {
                                         placeholder=' . . . . . '
                                         style={{ borderColor: 'pink' }} />
                                 </Form.Item>
-                                <Form.Item name='amount'>
+                                <Form.Item name='amount' rules={[{ required: true, message: 'Please input' }]}>
                                     <InputNumber min={0}
                                         style={{ paddingLeft: '12px', color: 'deeppink', display: visible }}
                                         placeholder='amount'
@@ -165,13 +149,13 @@ export default function OpdForm() {
                                 </Form.Item>
                             </Row>
 
-                            <br />
-                            <Form.Item>
                                 <Button htmlType="submit"
-                                    style={{ display: show, backgroundColor: 'pink', borderColor: 'deep' }}>
+                                    style={{ backgroundColor: 'pink' }}>
                                     Save Record
                                 </Button>
-                            </Form.Item>
+                                <Button htmlType="reset" style={{borderColor:'pink'}}>
+                                    Clear
+                                </Button>
                         </Col>
                     </div>
                 }

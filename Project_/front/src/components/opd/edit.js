@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "../../config/axios";
-import { Popover, Row, Col, Steps, Select, Card, Input, Button, InputNumber, Form, message } from 'antd';
+import { Row, Col, Steps, Select, Card, Input, Button, InputNumber, Form, message } from 'antd';
 import { CalendarOutlined, EditOutlined } from '@ant-design/icons';
 
 
@@ -56,25 +56,20 @@ export default function UpdateOPD() {
     }
 
     const [display, displayB] = useState('none')
-    const [color, colorO] = useState('')
     const [step, setStep] = useState('1')
 
     const head = (
         <div >
             <Select
                 labelInValue
-                style={{ width: 150, borderColor: color }}
+                style={{ width: 150}}
                 onSelect={onFill}
                 defaultValue='เลือกวันที่'
-            // open
             >
                 {Opt.reverse()}
             </Select>
         </div>
     )
-
-    const [head2, change2] = useState('แก้ไขข้อมูลเดิม')
-
 
     const edit = (
         <div style={{ display: display }}>
@@ -86,7 +81,7 @@ export default function UpdateOPD() {
                     <Col>
                         <Card title="ผู้รับบริการ" style={{ borderRadius: '15px' }}>
                             <Form.Item name='customer'>
-                                <InputNumber min={0} style={{ paddingLeft: '22px', borderColor: color }} />
+                                <InputNumber min={0} style={{ paddingLeft: '22px' }} />
                             </Form.Item>
                         </Card>
                     </Col>
@@ -148,9 +143,7 @@ export default function UpdateOPD() {
                     style={{ backgroundColor: 'pink', borderRadius: '7px', display: display }} >
                     ยืนยันการแก้ไข
                 </Button>
-
             </Form>
-
         </div >
     )
 
@@ -160,7 +153,7 @@ export default function UpdateOPD() {
 
             <Steps current={step} direction='vertical'>
                 <Step title={head} icon={<CalendarOutlined />} />
-                <Step title={head2} description={edit} icon={<EditOutlined />} />
+                <Step title='แก้ไขข้อมูลเดิม' description={edit} icon={<EditOutlined />} />
             </Steps>
         </div>
     );

@@ -42,7 +42,7 @@ export default function OrForm() {
         obj['total'] = totals
         const value = Object.assign(values, obj)
         console.log(value) // = values
-console.log(moment(dateRec) >= moment())
+
         if (dateRec == Date) {
             confirm({
                 title: 'ยืนยันรายการบันทึกของวันนี้',
@@ -103,7 +103,7 @@ console.log(moment(dateRec) >= moment())
 
         <div className="site-layout-content">
             <Form form={form} onFinish={onFinish}>
-                <Form.Item name='date'>
+                <Form.Item name='date' rules={[{ required: true, message: 'Please select' }]}>
                     <AutoComplete placeholder='เลือกวันที่บันทึก'
                         options={option}
                         
@@ -237,6 +237,7 @@ console.log(moment(dateRec) >= moment())
                                                 onChange={(e) => input(e)}
                                                 value={other}
                                                 placeholder='อื่นๆ'
+                                                required ={Boolean(amount)}
                                             />
                                         </Form.Item>
                                     </Col>
@@ -247,6 +248,7 @@ console.log(moment(dateRec) >= moment())
                                                 onChange={(e) => num(e)}
                                                 value={amount}
                                                 placeholder='จำนวน'
+                                                required ={Boolean(other)}
                                             />
                                         </Form.Item>
                                     </Col>

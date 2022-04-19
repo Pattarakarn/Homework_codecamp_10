@@ -1,5 +1,4 @@
 const db = require("../models");
-const User = require('../models/User')
 
 const getOPDListById = async (req,res) => {
     const targetId = req.params.id;
@@ -48,6 +47,7 @@ const addOPDList = async (req, res) => {
                 admit: editAdmit,
                 other: editOther,
                 amount: editAmount,
+                total: editVisit+editTele+editAdmit+editAmount,
                 recorder: req.user.username
             });
             res.status(200).send({ message: "updating is success" });

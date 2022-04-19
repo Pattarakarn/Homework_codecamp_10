@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "../../config/axios";
-import { Popconfirm, Descriptions, Steps, Select, Card, Input, Button, Row, Divider, InputNumber, Form, message } from 'antd';
+import { Descriptions, Steps, Select, Card, Input, Button, Row, Divider, InputNumber, Form, message } from 'antd';
 import { CalendarOutlined, EditOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
@@ -17,7 +17,8 @@ export default function UpdateNon() {
     const list = localStorage.getItem('allNon')
     const nonL = JSON.parse(list)
 
-    const sortNonL = (nonL.sort((a, b) => new Date(b.date) - new Date(a.date)))
+    const sortNonL = nonL.sort(function(a, b){return new Date(a.date)- new Date(b.date)});
+    console.log(sortNonL)
     const Opt = sortNonL.map((rank, i, row) => {
         const children = [];
         for (let i = 0; i < row.length; i++) {
@@ -86,7 +87,7 @@ export default function UpdateNon() {
                 onSelect={onFill}
                 defaultValue='เลือกวันที่'
             >
-                {Opt}
+                {Opt.reverse()}
             </Select>
         </div>
     )
@@ -158,7 +159,6 @@ export default function UpdateNon() {
                     <Descriptions size="small" column={5}>
                         <Descriptions.Item>
                             <Form.Item name="echo" label="Echo">
-
                                 <InputNumber onChange={() => { change(); oChange(); }} min={0} style={{ width: '3.5em', borderRadius: bRadius, paddingLeft: padding, color: color }} />
                             </Form.Item>
                         </Descriptions.Item>
@@ -226,18 +226,10 @@ export default function UpdateNon() {
                     </Descriptions.Item>
                 </Descriptions>
 
-                {/* <Popconfirm
-                        // placement="rightTop"
-                        title='ข้อมูลจะถูกอัพเดทโดยคุณ'
-                        okText="ตกลง"
-                        cancelText="ยกเลิก"
-                        onCancel={() => {message.info('ยกเลิกการอัพเดทข้อมูล');} }
-                    > */}
                 <Button htmlType="submit" onFinish={onFinish}
                     style={{ backgroundColor: '#EF6C57', color: 'white', borderRadius: '7px', display: display }} >
                     ยืนยันการแก้ไข
                 </Button>
-                {/* </Popconfirm> */}
 
             </Form>
         </div >

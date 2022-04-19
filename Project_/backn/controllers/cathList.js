@@ -17,7 +17,7 @@ const addCathList = async (req, res) => {
         customer: req.body.customer,
         total: req.body.total,
 
-        cag: req.body.cag,
+        cardiac: req.body.cardiac,
         ep: req.body.ep,
         neuro: req.body.neuro,
         vascular: req.body.vascular,
@@ -39,7 +39,7 @@ const editCathList = async (req, res) => {
 
     const editCustomer = req.body.customer;
 
-    const editCardiac = req.body.cag;
+    const editCardiac = req.body.cardiac;
     const editEp = req.body.ep;
     const editNeuro = req.body.neuro;
     const editVascular = req.body.vascular;

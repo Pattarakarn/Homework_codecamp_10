@@ -87,9 +87,21 @@ const editNonList = async (req, res) => {
     }
 };
 
+const deleteNonList = async (req, res) => {
+    const targetId = Number(req.params.id);
+    const targetList = await db.NonList.findOne({ where: { id: targetId } });
+    if (targetList) {
+        await targetList.destroy()
+        res.status(204).send();
+    } else {
+        res.status(404).send({ message: "List not found" });
+    }
+};
+
 module.exports = {
     getNonList,
     addNonList,
     editNonList,
     getNonListById,
+    deleteNonList
 };

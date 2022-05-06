@@ -6,14 +6,7 @@ import { CalendarOutlined, EditOutlined } from '@ant-design/icons';
 const { Option } = Select;
 const { Step } = Steps;
 
-
 export default function UpdateNon() {
-
-    const [nonList, setNonList] = useState([]);
-    const fetchList = async () => {
-        const httpResponse = await axios.get("/nonlist");
-        setNonList(httpResponse.data);
-    };
     const list = localStorage.getItem('allNon')
     const nonL = JSON.parse(list)
 
@@ -195,7 +188,7 @@ export default function UpdateNon() {
                 </Descriptions>
 
                 <Descriptions size="small" column={5}>
-                    <Descriptions.Item>
+                    <Descriptions.Item span={2}>
                         <Form.Item name="bicycle" label="Bicycle stress">
 
                             <InputNumber onChange={() => { change(); oChange(); }} min={0} style={{ width: '3.5em', borderRadius: bRadius, paddingLeft: padding, color: color }} />

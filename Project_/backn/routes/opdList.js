@@ -9,5 +9,6 @@ router.get('/', authentication, opdListContollers.getOPDList);
 router.post('/', authentication, opdListContollers.addOPDList);
 router.get('/:id', authentication, opdListContollers.getOPDListById);
 router.put('/:id', authentication, opdListContollers.editOPDList);
+router.delete('/:id', authentication, opdListContollers.deleteOpdList);
 
 module.exports = router;

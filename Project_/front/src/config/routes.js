@@ -6,6 +6,7 @@ import SummaryPage from '../components/pages/Summary';
 import OpdPage from '../components/opd/OPD';
 import OrPage from '../components/or/OR.js';
 import Download from '../components/Summary/download';
+import service from '../components/Summary/services';
 
 const components = {
     home: {
@@ -40,6 +41,10 @@ const components = {
         url: "/download",
         component: Download
     },
+    service: {
+        url: "/admin",
+        component: service
+    },
 };
 
 export default {
@@ -53,6 +58,7 @@ export default {
         allowedRoutes: [
             components.summary,
             components.load,
+            components.service
         ],
         redirectRoutes: "/summary"
     },

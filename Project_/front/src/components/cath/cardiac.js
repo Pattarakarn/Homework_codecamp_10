@@ -24,14 +24,14 @@ export default function Cardiac() {
     const [list, input] = useState('')
     const [amount, num] = useState('0')
 
-    const lists = localStorage.getItem('allCath')
-    const cathL = JSON.parse(lists)
-    const Opt = cathL.map((rank, i, row) => {
-        if (i + 1 !== 0) {
-            return (rank.date)
-            // return localStorage.setItem('columN', JSON.stringify(Object.keys(rank)));
-        }
-    })
+    // const lists = localStorage.getItem('allCath')
+    // const cathL = JSON.parse(lists)
+    // const Opt = cathL.map((rank, i, row) => {
+    //     if (i + 1 !== 0) {
+    //         return (rank.date)
+    //         // return localStorage.setItem('columN', JSON.stringify(Object.keys(rank)));
+    //     }
+    // })
 
     useEffect(() => {
             const getVal = ( form.getFieldValue() )

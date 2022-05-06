@@ -1,25 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "../../config/axios";
 import { Steps, Layout, Select, Card, Input, Button, Row, Col, Divider, InputNumber, Form, message } from 'antd';
 import { CalendarOutlined, EditOutlined } from '@ant-design/icons';
-import { SyncOutlined } from '@ant-design/icons';
-
 
 const { Option } = Select;
 const { Content } = Layout;
 const { Step } = Steps;
 
-
 export default function UpdateCath() {
-
-    const [cathList, setCathList] = useState([]);
-    const fetchList = async () => {
-        const httpResponse = await axios.get("/cathlist");
-        setCathList(httpResponse.data);
-    };
+    //     const [cathList, setCathList] = useState([]);
+    //     const fetchList = async () => {
+    //     };
+    //     useEffect(() => {
+    //         const httpResponse = axios.get("/cathlist");
+    //         setCathList(httpResponse.data);
+    //     })
+    // console.log(cathList)
 
     const list = localStorage.getItem('allCath')
     const cathL = JSON.parse(list)
+
     const sortCathL = (cathL.sort((a, b) => new Date(b.date) - new Date(a.date)))
     const Opt = sortCathL.map((rank, i, row) => {
         const children = [];
@@ -30,27 +30,25 @@ export default function UpdateCath() {
     })
 
     const [form] = Form.useForm();
+    const [record, setData] = useState()
 
     const onFill = (value) => {
         setStep('2')
         displayB('')
-        localStorage.setItem('id', value.key)
         const Edit = cathL.map((rank) => {
             if (rank.date == value.value) {
-                return localStorage.setItem('data', JSON.stringify(rank));
+                setData(rank)
             } else {
                 return ''
             }
         })
-        const Data = localStorage.getItem('data')
-        const record = JSON.parse(Data)
-        console.log(record)
+
         const detailCardiac = JSON.parse(record.detailCardiac)
         const detailEp = JSON.parse(record.detailEp)
         const detailVascular = JSON.parse(record.detailVascular)
         const detailNeuro = JSON.parse(record.detailNeuro)
         const detailSpecial = JSON.parse(record.detailSpecial)
-
+        
         form.setFieldsValue({
             customer: record.customer,
             total: record.total,
@@ -95,14 +93,11 @@ export default function UpdateCath() {
         });
     };
 
-    // const deleteTodoItem = async (id) => {
-    //     await axios.delete(`/nonlist/${id}`);
-    //     fetchList();
-    // }
-
     const onFinish = values => {
+        console.log(values)
         message.info('กำลังอัพเดทข้อมูล')
-        const id = localStorage.getItem('id')
+        const id = record.id
+        console.log(id)
         axios.put(`/cathlist/${id}`, values);
         // window.location.reload()
     }
@@ -326,7 +321,7 @@ export default function UpdateCath() {
                         </Col>
                     </Row>
                     <Row gutter={[16, 16]}>
-                        
+
                         <Col>
                             <Form.Item name="cardioversion" label="Cardioversion">
                                 <InputNumber onChange={() => { change(); oChange(); }} min={0} style={{ width: '4em', borderRadius: bRadius, paddingLeft: padding, color: color }} />
@@ -349,14 +344,12 @@ export default function UpdateCath() {
 
     return (
         <div>
-            {/* <div className="site-layout-content" style={{ width: '80%' }}> */}
             <Content>
                 <Steps current={step} direction='vertical'>
                     <Step title={head} icon={<CalendarOutlined />} />
                     <Step title={head2} description={edit} icon={<EditOutlined />} />
                 </Steps>
             </Content>
-            {/* </div> */}
         </div>
     );
 }

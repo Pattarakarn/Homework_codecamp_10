@@ -51,11 +51,11 @@ const editCathList = async (req, res) => {
     const editDetailVascular = req.body.detailVascular;
     const editDetailSpecial = req.body.detailSpecial;
 
-    const targetList = await db.CathList.findOne({ where: { id: targetId} });
+    const targetList = await db.CathList.findOne({ where: { id: targetId } });
     if (targetList) {
         await targetList.update({
             customer: editCustomer,
-            total: editCardiac+editEp+editNeuro+editVascular+editSpecial,
+            total: editCardiac + editEp + editNeuro + editVascular + editSpecial,
 
             cag: editCardiac,
             ep: editEp,
@@ -76,20 +76,21 @@ const editCathList = async (req, res) => {
     }
 };
 
-// const deleteTodoList = async (req, res) => {
-//     const targetId = Number(req.params.id);
-//     const targetTodo = await db.TodoList.findOne({ where: {id: targetId, user_id: req.user.id} });
-//     if (targetTodo) {
-//         await targetTodo.destroy()
-//         res.status(204).send();
-//     } else {
-//         res.status(404).send({message: "Todo list not found"});
-//     }
-// };
+const deleteCathList = async (req, res) => {
+    const targetId = Number(req.params.id);
+    const targetTodo = await db.CathList.findOne({ where: { id: targetId } });
+    if (targetTodo) {
+        await targetTodo.destroy()
+        res.status(204).send();
+    } else {
+        res.status(404).send({ message: "Todo list not found" });
+    }
+};
 
 module.exports = {
     getCathList,
     addCathList,
     editCathList,
     getCathListById,
+    deleteCathList
 };

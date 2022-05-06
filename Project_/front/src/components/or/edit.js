@@ -3,10 +3,8 @@ import axios from "../../config/axios";
 import { Divider, Row, Col, Steps, Select, Card, Input, Button, InputNumber, Form, message } from 'antd';
 import { CalendarOutlined, EditOutlined } from '@ant-design/icons';
 
-
 const { Option } = Select;
 const { Step } = Steps;
-
 
 export default function UpdateOR() {
 
@@ -29,7 +27,6 @@ export default function UpdateOR() {
         displayB('')
         localStorage.setItem('id', value.key)
         const Edit = orL.map((rank) => {
-            console.log(rank.date)
             if (rank.date == value.value) {
                 return localStorage.setItem('data', JSON.stringify(rank));
             } else {
@@ -63,7 +60,7 @@ export default function UpdateOR() {
         message.info('กำลังอัพเดทข้อมูล')
         const id = localStorage.getItem('id')
         axios.put(`/orlist/${id}`, values);
-        // window.location.reload()
+        window.location.reload()
     }
 
     const [display, displayB] = useState('none')
@@ -95,6 +92,11 @@ export default function UpdateOR() {
     const oChange = () => {
         padd('')
     }
+
+    const [ruleNum, setNum] = useState(false)
+    const [ruleOther, setOther] = useState(false)
+    const otherInfo = e => { e.length ? setNum(true) : setNum(false) }
+    const amountNum = e => { e ? setOther(true) : setOther(false) }
 
     const edit = (
         <div style={{ display: display }}>
@@ -181,8 +183,8 @@ export default function UpdateOR() {
 
                 <Row gutter={[16, 16]}>
                     <Col>
-                        <Form.Item name="other" label="Other">
-                            <Input onChange={() => { change(); oChange(); }} min={0}
+                        <Form.Item name="other" label="Other" rules={[{ required: ruleOther, message: 'Please input' }]}>
+                            <Input onChange={e => { change(); oChange(); otherInfo(e.target.value)}} min={0}
                                 style={{
                                     width: '11em',
                                     borderRadius: bRadius, paddingLeft: padding, color: color,
@@ -191,8 +193,8 @@ export default function UpdateOR() {
                         </Form.Item>
                     </Col>
                     <Col>
-                        <Form.Item name="amount" label='Amount'>
-                            <InputNumber onChange={() => { change(); oChange(); }} min={0}
+                        <Form.Item name="amount" label='Amount' rules={[{ required: ruleNum, message: 'Please input' }]}>
+                            <InputNumber onChange={e => { change(); oChange(); amountNum(e) }} min={0}
                                 style={{
                                     width: '7em', borderRadius: bRadius, paddingLeft: padding, color: color
                                     , paddingLeft: '12px'

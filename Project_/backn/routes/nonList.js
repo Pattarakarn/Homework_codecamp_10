@@ -9,5 +9,6 @@ router.get('/', authentication, nonListContollers.getNonList);
 router.post('/', authentication, nonListContollers.addNonList);
 router.get('/:id', authentication, nonListContollers.getNonListById);
 router.put('/:id', authentication, nonListContollers.editNonList);
+router.delete('/:id', authentication, nonListContollers.deleteNonList);
 
 module.exports = router;

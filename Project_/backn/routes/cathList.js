@@ -9,7 +9,6 @@ router.get('/', authentication, cathListContollers.getCathList);
 router.post('/', authentication, cathListContollers.addCathList);
 router.get('/:id', authentication, cathListContollers.getCathListById);
 router.put('/:id', authentication, cathListContollers.editCathList);
-
-// router.delete('/:id', authentication, todoListContollers.deleteTodoList);
+router.delete('/:id', authentication, cathListContollers.deleteCathList);
 
 module.exports = router;

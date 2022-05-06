@@ -77,7 +77,7 @@ export default function Contents() {
                 {/* <Col span={12}> */}
                 <Col flex={1}>
                     <Card title="OPD" hoverable='true'>
-                        {ListOPD == null || ListOPD[0] == null || totalOPD == 0 ?
+                        {ListOPD === null || ListOPD[0] === null || totalOPD === 0 ?
                             <div style={{ backgroundColor: '#ffd6e7' }}>ไม่พบข้อมูล</div>
                             :
                             <div>
@@ -86,13 +86,13 @@ export default function Contents() {
                             </div>
                         }
                     </Card>
-
                 </Col>
+
                 <Col flex={1}>
                     {/* <Col span={12}> */}
 
                     <Card title="Non-invasive" hoverable='true'>
-                        {ListN == null || ListN[0] == null || totalN == 0 ?
+                        {ListN === null || ListN[0] === null || totalN === 0 ?
                             <div style={{ backgroundColor: 'rgba(255, 128, 0, 0.2' }}>ไม่พบข้อมูล</div>
                             :
                             <div>
@@ -101,13 +101,13 @@ export default function Contents() {
                             </div>
                         }
                     </Card>
-
                 </Col>
+
                 <Col flex={1}>
                     {/* <Col span={12}> */}
 
                     <Card title="Cath-Lab" hoverable='true' >
-                        {ListC == null || ListC[0] == null || totalC == 0 ?
+                        {ListC === null || ListC[0] === null || totalC === 0 ?
                             <div style={{ backgroundColor: '#d6e4ff' }}>ไม่พบข้อมูล</div>
                             :
                             <div>
@@ -116,12 +116,12 @@ export default function Contents() {
                             </div>
                         }
                     </Card>
-
                 </Col>
+
                 {/* <Col span={12}> */}
                 <Col flex={1}>
                     <Card title="OR" hoverable='true' >
-                        {ListOR == null || ListC[0] == null || totalOR == 0 ?
+                        {ListOR === null || ListOR[0] === null || totalOR === 0 ?
                             <div style={{ backgroundColor: '#98DECF' }}>ไม่พบข้อมูล</div>
                             :
                             <div>
@@ -130,7 +130,6 @@ export default function Contents() {
                             </div>
                         }
                     </Card>
-
                 </Col>
             </Row>
 

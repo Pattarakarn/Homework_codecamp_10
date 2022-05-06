@@ -77,9 +77,22 @@ const editORList = async (req, res) => {
     }
 };
 
+const deleteOrList = async (req, res) => {
+    const targetId = Number(req.params.id);
+    const targetList = await db.OrList.findOne({ where: { id: targetId } });
+    if (targetList) {
+        await targetList.destroy()
+        res.status(204).send();
+    } else {
+        res.status(404).send({ message: "List not found" });
+    }
+};
+
+
 module.exports = {
     getORList,
     addORList,
     editORList,
     getORListById,
+    deleteOrList
 };

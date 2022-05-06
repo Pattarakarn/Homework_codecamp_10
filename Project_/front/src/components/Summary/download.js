@@ -22,13 +22,25 @@ export default function Download() {
     const opd = JSON.parse(allOPD)
 
     function onChange(date, dateString) {
-        const from = dateString[0]
-        const to = dateString[1]
-        const dataOPD = opd.filter(opd => (opd.date) >= from && (opd.date) <= to)
-        const dataN = non.filter(non => (non.date) >= from && (non.date) <= to)
-        const dataC = cath.filter(cath => (cath.date) >= from && (cath.date) <= to)
-        const dataOR = or.filter(or => (or.date) >= from && (or.date) <= to)
-        console.log(dateString[1] == '')
+        const from = new Date(dateString[0])
+        const to = new Date(dateString[1])
+        const dataOPD = opd.filter(opd => {
+            let date = new Date(opd.date);
+            return date >= from && date <= to;
+        })
+        const dataN = non.filter(non => {
+            let date = new Date(non.date);
+            return date >= from && date <= to;
+        })
+        const dataC = cath.filter(cath => {
+            let date = new Date(cath.date);
+            return date >= from && date <= to;
+        })
+        const dataOR = or.filter(or => {
+            let date = new Date(or.date);
+            return date >= from && date <= to;
+        })
+
         if (dateString[1] !== '') {
             setText('.. Download ..')
             if (dataOPD.length !== 0) {
@@ -62,15 +74,31 @@ export default function Download() {
     const [nonLoad, setnonLoad] = useState('')
     const [cathLoad, setcathLoad] = useState('')
 
-    const menu = (
-        <Menu>
-            <Menu.Item>
+    const menus = (
+        <div style={{ display: 'inline-flex', alignSelf: 'center'}}>
+            <Button type="default" style={{ border: 'none' }}>
                 <a rel="" href="/">
-                    View Summary
+                    View
                 </a>
-            </Menu.Item>
-        </Menu>
+            </Button>
+            <Button type="default" style={{ border: 'none' }}>
+                <a rel="" href="/admin">
+                    Manage
+                </a>
+            </Button>
+            <Button type="text">
+                Download
+            </Button>
+        </div>
     )
+
+    const menuIcon = (
+        <Button type="text" shape="circle" size='large'
+                style={{ backgroundColor: 'purple', color: 'white', cursor: 'default' }}
+                icon={<DownloadOutlined />} ></Button>
+    )
+
+    const [menu, setMenu] = useState(menuIcon)
 
     return (
         <div >
@@ -87,16 +115,18 @@ export default function Download() {
                 </Button>
                 </Breadcrumb.Item >
             </Breadcrumb> */}
-
-            <Dropdown overlay={menu}>
+            <div style={{ height: '50px', paddingTop: '20px' }}
+                onMouseOver={() => setMenu(menus)}
+                onMouseLeave={() => setMenu(menuIcon)}>
+                {menu}
+            </div>
+            {/* <Dropdown overlay={menu}>
                 <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                    
                     <Button type="text" shape="circle" size='large'
                         style={{ backgroundColor: 'purple', color: 'white', cursor: 'default' }}
                         icon={<DownloadOutlined />} ></Button>
-                        
                 </a>
-            </Dropdown>
+            </Dropdown> */}
 
             <Divider > {text} </Divider>
 

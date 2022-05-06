@@ -8,26 +8,35 @@ import Contents from '../Summary/content';
 import { EyeOutlined, DownOutlined } from '@ant-design/icons';
 
 export default function All() {
+  const sum = []
 
   useEffect(() => {
     if (axios.get('/nonlist') != null) {
       axios.get("/nonlist").then((res) => {
         localStorage.setItem('allNon', JSON.stringify(res.data))
+        sum.push(res.data)
+        localStorage.setItem('all', JSON.stringify(sum.flat()))
       })
     }
     if (axios.get('/cathlist') != null) {
       axios.get("/cathlist").then((res) => {
         localStorage.setItem('allCath', JSON.stringify(res.data))
+        sum.push(res.data)
+        localStorage.setItem('all', JSON.stringify(sum.flat()))
       })
     }
     if (axios.get('/orlist') != null) {
       axios.get("/orlist").then((res) => {
         localStorage.setItem('allOR', JSON.stringify(res.data))
+        sum.push(res.data)
+        localStorage.setItem('all', JSON.stringify(sum.flat()))
       })
     }
     if (axios.get('/opdlist') != null) {
       axios.get("/opdlist").then((res) => {
         localStorage.setItem('allOPD', JSON.stringify(res.data))
+        sum.push(res.data)
+        localStorage.setItem('all', JSON.stringify(sum.flat()))
       })
     }
   })
@@ -73,7 +82,6 @@ export default function All() {
       ccontent(<Contents />)
       const Non = allNon.map((rank) => {
         if ((rank.date) == dateString) {
-          console.log(rank)
           localStorage.setItem('ListN', JSON.stringify(rank))
           localStorage.setItem('customerN', rank.customer)
           localStorage.setItem('totalN', rank.total)
@@ -150,29 +158,36 @@ export default function All() {
     }
   }
 
-  const menu = (
-    <Menu>
-      <Menu.Item>
+  const menus = (
+    <div style={{ display: 'inline-flex' }}>
+      <Button type="default" style={{ border: 'none' }}>
+        <a rel="" href="/admin">
+          Manage
+        </a>
+      </Button>
+      <Button type="default" style={{ border: 'none' }}>
         <a rel="" href="/download">
           Download
         </a>
-      </Menu.Item>
-    </Menu>
+      </Button>
+    </div>
   )
+
+  const [menu, setMenu] = useState()
 
   return (
     <div>
       <Head />
 
-      <Dropdown overlay={menu}>
-        <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-          <Button type="default" style={{ color: 'white', backgroundColor: 'purple', borderRadius: '20px' }}
-            icon={<EyeOutlined />} >
-            View
-            <DownOutlined />
-          </Button>
-        </a>
-      </Dropdown>
+      <div style={{ height: '30px', paddingTop: '20px' }}
+        onMouseOver={() => setMenu(menus)}
+        onMouseLeave={() => setMenu()}
+      >
+        <Button type='text'>
+          <EyeOutlined /> View
+        </Button>
+        {menu}
+      </div>
 
       <Divider />
 

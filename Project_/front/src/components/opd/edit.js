@@ -3,13 +3,10 @@ import axios from "../../config/axios";
 import { Row, Col, Steps, Select, Card, Input, Button, InputNumber, Form, message } from 'antd';
 import { CalendarOutlined, EditOutlined } from '@ant-design/icons';
 
-
 const { Option } = Select;
 const { Step } = Steps;
 
-
 export default function UpdateOPD() {
-
     const list = localStorage.getItem('allOpd')
     const opdL = JSON.parse(list) || []
 
@@ -57,6 +54,11 @@ export default function UpdateOPD() {
 
     const [display, displayB] = useState('none')
     const [step, setStep] = useState('1')
+    const [required, setRequired] = useState(false)
+    const [rule, setRule] = useState(false)
+
+    const otherInfo = e => { e.length ? setRequired(true) : setRequired(false) }
+    const amountNum = e => { e ? setRule(true) : setRule(false) }
 
     const head = (
         <div >
@@ -121,11 +123,12 @@ export default function UpdateOPD() {
 
                     <Row gutter={[8]}>
                         <Col>
-                            <Form.Item name='other'>
+                            <Form.Item name='other' rules={[{ required: rule, message: 'Please input' }]}>
                                 <Input name="Other" label='Other'
                                     placeholder='อื่นๆ :  เพิ่มเติม'
                                     style={{ borderTop: 'none', borderLeft: 'none', borderRight: 'none' }}
                                     min={0}
+                                    onChange={e => otherInfo(e.target.value)}
                                 />
                             </Form.Item>
                         </Col>
@@ -134,6 +137,8 @@ export default function UpdateOPD() {
                                 <InputNumber min={0}
                                     placeholder='จำนวน'
                                     style={{ paddingLeft: '12px' }}
+                                    required={required}
+                                    onChange={e => amountNum(e)}
                                 />
                             </Form.Item>
                         </Col>

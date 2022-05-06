@@ -34,7 +34,12 @@ export default function OpdForm() {
     const [dateRec, dateR] = useState()
 
     const onFinish = values => {
-        const total = values.admit + values.visit + values.tele + values.amount
+        const admit = values.admit || 0
+        const visit = values.visit || 0
+        const tele = values.tele || 0
+        const amount = values.amount || 0
+
+        const total = admit + visit + tele + amount
         const obj = {}
         obj['total'] = total
         const value = Object.assign(values, obj)
@@ -81,11 +86,18 @@ export default function OpdForm() {
         />
     )
 
-    const showInputNum = () => {
-        width('168px')
-        change('')
-        setPrefix('')
+    const showInputNum = e => {
+        if (e.length) {
+            width('168px')
+            change('')
+            setPrefix('')
+            setRequire(true)
+        } else {
+            setRequire(false)
+        }
     }
+
+    const [require, setRequire] = useState();
     const [prefixOther, setPrefix] = useState('Other');
     const [changeWidth, width] = useState('220px');
     const [visible, change] = useState('none');
@@ -137,11 +149,11 @@ export default function OpdForm() {
                             </Row>
                             <Row>
                                 <Form.Item name='other'>
-                                    <Input addonBefore={prefixOther} onChange={showInputNum}
+                                    <Input addonBefore={prefixOther} onChange={e => showInputNum(e.target.value)}
                                         placeholder=' . . . . . '
                                         style={{ borderColor: 'pink' }} />
                                 </Form.Item>
-                                <Form.Item name='amount' rules={[{ required: true, message: 'Please input' }]}>
+                                <Form.Item name='amount' rules={[{ required: require, message: 'Please input' }]}>
                                     <InputNumber min={0}
                                         style={{ paddingLeft: '12px', color: 'deeppink', display: visible }}
                                         placeholder='amount'

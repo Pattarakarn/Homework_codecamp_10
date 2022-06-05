@@ -38,17 +38,20 @@ export default function UpdateCath() {
         const Edit = cathL.map((rank) => {
             if (rank.date == value.value) {
                 setData(rank)
+                localStorage.setItem('data', JSON.stringify(rank));
             } else {
                 return ''
             }
         })
+        const Data = localStorage.getItem('data')
+        const record = JSON.parse(Data)
 
         const detailCardiac = JSON.parse(record.detailCardiac)
         const detailEp = JSON.parse(record.detailEp)
         const detailVascular = JSON.parse(record.detailVascular)
         const detailNeuro = JSON.parse(record.detailNeuro)
         const detailSpecial = JSON.parse(record.detailSpecial)
-        
+
         form.setFieldsValue({
             customer: record.customer,
             total: record.total,

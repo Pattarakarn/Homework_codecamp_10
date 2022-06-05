@@ -7,7 +7,7 @@ const { Panel } = Collapse;
 export default function NonForm() {
 
     useEffect(() => {
-        const initialO = nOther||0
+        const initialO = nOther || 0
 
         const sum = (parseInt(nEKG) + parseInt(nABI) + parseInt(nHolter) + parseInt(nEcho) + parseInt(nEST) + parseInt(nStress) + parseInt(nDobu) + parseInt(nEcho3D) + parseInt(nABP) + parseInt(nEvent) + parseInt(nBicycle) + parseInt(nTilt) + parseInt(nTee) + initialO)
         const val = {
@@ -70,7 +70,7 @@ export default function NonForm() {
             {/* </Col> */}
 
             <Form.Item>
-                <Row >
+                <Row align="center">
                     <Col md='8'>
                         <Input style={{ cursor: 'default' }}
                             value='EKG'
@@ -87,7 +87,7 @@ export default function NonForm() {
                 </Row>
             </Form.Item>
             <Form.Item>
-                <Row >
+                <Row align="center">
                     <Col md='8'>
                         <Input style={{ cursor: 'default' }}
                             value='ABI'
@@ -104,7 +104,7 @@ export default function NonForm() {
                 </Row>
             </Form.Item>
             <Form.Item>
-                <Row >
+                <Row align="center">
                     <Col md='8'>
                         <Input style={{ cursor: 'default' }}
                             value='Holter'
@@ -121,7 +121,7 @@ export default function NonForm() {
                 </Row>
             </Form.Item>
             <Form.Item>
-                <Row >
+                <Row align="center">
                     <Col md='8'>
                         <Input style={{ cursor: 'default' }}
                             value='ABP'
@@ -138,191 +138,192 @@ export default function NonForm() {
                 </Row>
             </Form.Item>
 
-            <Collapse ghost defaultActiveKey={['0']}>
-                <Panel key="0">
-                    <div style={{
-                        backgroundColor: 'rgba(255, 128, 0, 0.2)', padding: '30px 0', borderRadius: '15px'
-                    }}>
-                        <Form.Item>
-                            <Row >
+            <div style={{ width: '70%', margin: "0 15%" }}>
+                <Collapse ghost defaultActiveKey={['0']}>
+                    <Panel key="0">
+                        <div style={{
+                            backgroundColor: 'rgba(255, 128, 0, 0.2)', padding: '30px 0', borderRadius: '15px'
+                        }}>
+                            <Form.Item>
+                                <Row align="center">
+                                    <Col md='8'>
+                                        <Input style={{ cursor: 'default' }}
+                                            value='Echo'
+                                        />
+                                    </Col>
+                                    <Col md='4'>
+                                        <InputNumber min={0}
+                                            placeholder="ระบุจำนวน"
+                                            value={nEcho}
+                                            onChange={(e) => numEcho(e)}
+                                            style={{ paddingLeft: '19px' }}
+                                        />
+                                    </Col>
+                                </Row>
+                            </Form.Item>
+                            <Form.Item>
+                                <Row align="center">
+                                    <Col md='8'>
+                                        <Input style={{ cursor: 'default' }}
+                                            value='Echo 3D/4D'
+                                        />
+                                    </Col>
+                                    <Col md='4'>
+                                        <InputNumber min={0}
+                                            placeholder="ระบุจำนวน"
+                                            value={nEcho3D}
+                                            onChange={(e) => numEcho3D(e)}
+                                            style={{ paddingLeft: '19px' }}
+                                        />
+                                    </Col>
+                                </Row>
+                            </Form.Item>
+                            <Form.Item>
+                                <Row align="center">
+                                    <Col md='8'>
+                                        <Input style={{ cursor: 'default' }}
+                                            value='EST'
+                                        />
+                                    </Col>
+                                    <Col md='4'>
+                                        <InputNumber min={0}
+                                            placeholder="ระบุจำนวน"
+                                            value={nEST}
+                                            onChange={(e) => numEST(e)}
+                                            style={{ paddingLeft: '19px' }}
+                                        />
+                                    </Col>
+                                </Row>
+                            </Form.Item>
+                            <Form.Item>
+                                <Row align="center">
+                                    <Col md='8'>
+                                        <Input style={{ cursor: 'default' }}
+                                            value='Stress'
+                                        />
+                                    </Col>
+                                    <Col md='4'>
+                                        <InputNumber min={0}
+                                            placeholder="ระบุจำนวน"
+                                            value={nStress}
+                                            onChange={(e) => numStress(e)}
+                                            style={{ paddingLeft: '19px' }}
+                                        />
+                                    </Col>
+                                </Row>
+                            </Form.Item>
+                            <Form.Item>
+                                <Row align="center">
+                                    <Col md='8'>
+                                        <Input style={{ cursor: 'default' }}
+                                            value='Dobu'
+                                        />
+                                    </Col>
+                                    <Col md='4'>
+                                        <InputNumber min={0}
+                                            placeholder="ระบุจำนวน"
+                                            value={nDobu}
+                                            onChange={(e) => numDobu(e)}
+                                            style={{ paddingLeft: '19px' }}
+                                        />
+                                    </Col>
+                                </Row>
+                            </Form.Item>
+                        </div>
+                    </Panel>
+                    <Panel header="รายการอื่นๆ" key="1">
+                        <div style={{ backgroundColor: '#F2F2F2', padding: '30px 0', borderRadius: '15px' }}>
+                            <Form.Item>
+                                <Row align="center">
+                                    <Col md='8'>
+                                        <Input style={{ cursor: 'default' }}
+                                            value='TEE'
+                                        />
+                                    </Col>
+                                    <Col md='4'>
+                                        <InputNumber min={0}
+                                            placeholder="ระบุจำนวน"
+                                            value={nTee}
+                                            onChange={(e) => numTee(e)}
+                                            style={{ paddingLeft: '19px' }}
+                                        />
+                                    </Col>
+                                </Row>
+                            </Form.Item>
+                            <Form.Item>
+                                <Row align="center">
+                                    <Col md='8'>
+                                        <Input style={{ cursor: 'default' }}
+                                            value='Event'
+                                        />
+                                    </Col>
+                                    <Col md='4'>
+                                        <InputNumber min={0}
+                                            placeholder="ระบุจำนวน"
+                                            value={nEvent}
+                                            onChange={(e) => numEvent(e)}
+                                            style={{ paddingLeft: '19px' }}
+                                        />
+                                    </Col>
+                                </Row>
+                            </Form.Item>
+                            <Form.Item>
+                                <Row align="center">
+                                    <Col md='8'>
+                                        <Input style={{ cursor: 'default' }}
+                                            value='Tilt'
+                                        />
+                                    </Col>
+                                    <Col md='4'>
+                                        <InputNumber min={0}
+                                            placeholder="ระบุจำนวน"
+                                            value={nTilt}
+                                            onChange={(e) => numTilt(e)}
+                                            style={{ paddingLeft: '19px' }}
+                                        />
+                                    </Col>
+                                </Row>
+                            </Form.Item>
+                            <Form.Item>
+                                <Row align="center">
+                                    <Col md='8'>
+                                        <Input style={{ cursor: 'default' }}
+                                            value='Bicycle'
+                                        />
+                                    </Col>
+                                    <Col md='4'>
+                                        <InputNumber min={0}
+                                            placeholder="ระบุจำนวน"
+                                            value={nBicycle}
+                                            onChange={(e) => numBicycle(e)}
+                                            style={{ paddingLeft: '19px' }}
+                                        />
+                                    </Col>
+                                </Row>
+                            </Form.Item>
+                            <Row align="center">
                                 <Col md='8'>
-                                    <Input style={{ cursor: 'default' }}
-                                        value='Echo'
+                                    <Input
+                                        // style={{ width: 222 }}
+                                        placeholder='อื่นๆ (ระบุ)'
+                                        value={Other}
+                                        onChange={(e) => inputOther(e.target.value)}
+                                        required={Boolean(nOther)}
                                     />
                                 </Col>
                                 <Col md='4'>
                                     <InputNumber min={0}
-                                        placeholder="ระบุจำนวน"
-                                        value={nEcho}
-                                        onChange={(e) => numEcho(e)}
+                                        value={nOther}
+                                        onChange={(e) => numOther(e)}
                                         style={{ paddingLeft: '19px' }}
+                                        required={Boolean(Other)}
                                     />
                                 </Col>
                             </Row>
-                        </Form.Item>
-                        <Form.Item>
-                            <Row >
-                                <Col md='8'>
-                                    <Input style={{ cursor: 'default' }}
-                                        value='Echo 3D/4D'
-                                    />
-                                </Col>
-                                <Col md='4'>
-                                    <InputNumber min={0}
-                                        placeholder="ระบุจำนวน"
-                                        value={nEcho3D}
-                                        onChange={(e) => numEcho3D(e)}
-                                        style={{ paddingLeft: '19px' }}
-                                    />
-                                </Col>
-                            </Row>
-                        </Form.Item>
-                        <Form.Item>
-                            <Row >
-                                <Col md='8'>
-                                    <Input style={{ cursor: 'default' }}
-                                        value='EST'
-                                    />
-                                </Col>
-                                <Col md='4'>
-                                    <InputNumber min={0}
-                                        placeholder="ระบุจำนวน"
-                                        value={nEST}
-                                        onChange={(e) => numEST(e)}
-                                        style={{ paddingLeft: '19px' }}
-                                    />
-                                </Col>
-                            </Row>
-                        </Form.Item>
-                        <Form.Item>
-                            <Row >
-                                <Col md='8'>
-                                    <Input style={{ cursor: 'default' }}
-                                        value='Stress'
-                                    />
-                                </Col>
-                                <Col md='4'>
-                                    <InputNumber min={0}
-                                        placeholder="ระบุจำนวน"
-                                        value={nStress}
-                                        onChange={(e) => numStress(e)}
-                                        style={{ paddingLeft: '19px' }}
-                                    />
-                                </Col>
-                            </Row>
-                        </Form.Item>
-                        <Form.Item>
-                            <Row >
-                                <Col md='8'>
-                                    <Input style={{ cursor: 'default' }}
-                                        value='Dobu'
-                                    />
-                                </Col>
-                                <Col md='4'>
-                                    <InputNumber min={0}
-                                        placeholder="ระบุจำนวน"
-                                        value={nDobu}
-                                        onChange={(e) => numDobu(e)}
-                                        style={{ paddingLeft: '19px' }}
-                                    />
-                                </Col>
-                            </Row>
-                        </Form.Item>
-                    </div>
-                </Panel>
-                <Panel header="รายการอื่นๆ" key="1">
-                    <div style={{ backgroundColor: '#F2F2F2', padding: '30px 0', borderRadius: '15px' }}>
-                        <Form.Item>
-                            <Row>
-                                <Col md='8'>
-                                    <Input style={{ cursor: 'default' }}
-                                        value='TEE'
-
-                                    />
-                                </Col>
-                                <Col md='4'>
-                                    <InputNumber min={0}
-                                        placeholder="ระบุจำนวน"
-                                        value={nTee}
-                                        onChange={(e) => numTee(e)}
-                                        style={{ paddingLeft: '19px' }}
-                                    />
-                                </Col>
-                            </Row>
-                        </Form.Item>
-                        <Form.Item>
-                            <Row>
-                                <Col md='8'>
-                                    <Input style={{ cursor: 'default' }}
-                                        value='Event'
-                                    />
-                                </Col>
-                                <Col md='4'>
-                                    <InputNumber min={0}
-                                        placeholder="ระบุจำนวน"
-                                        value={nEvent}
-                                        onChange={(e) => numEvent(e)}
-                                        style={{ paddingLeft: '19px' }}
-                                    />
-                                </Col>
-                            </Row>
-                        </Form.Item>
-                        <Form.Item>
-                            <Row>
-                                <Col md='8'>
-                                    <Input style={{ cursor: 'default' }}
-                                        value='Tilt'
-                                    />
-                                </Col>
-                                <Col md='4'>
-                                    <InputNumber min={0}
-                                        placeholder="ระบุจำนวน"
-                                        value={nTilt}
-                                        onChange={(e) => numTilt(e)}
-                                        style={{ paddingLeft: '19px' }}
-                                    />
-                                </Col>
-                            </Row>
-                        </Form.Item>
-                        <Form.Item>
-                            <Row>
-                                <Col md='8'>
-                                    <Input style={{ cursor: 'default' }}
-                                        value='Bicycle'
-                                    />
-                                </Col>
-                                <Col md='4'>
-                                    <InputNumber min={0}
-                                        placeholder="ระบุจำนวน"
-                                        value={nBicycle}
-                                        onChange={(e) => numBicycle(e)}
-                                        style={{ paddingLeft: '19px' }}
-                                    />
-                                </Col>
-                            </Row>
-                        </Form.Item>
-                        <Row>
-                            <Col md='8'>
-                                <Input
-                                    // style={{ width: 222 }}
-                                    placeholder='อื่นๆ (ระบุ)'
-                                    value={Other}
-                                    onChange={(e) => inputOther(e.target.value)}
-                                    required ={Boolean(nOther)}
-                                />
-                            </Col>
-                            <Col md='4'>
-                                <InputNumber min={0}
-                                    value={nOther}
-                                    onChange={(e) => numOther(e)}
-                                    style={{ paddingLeft: '19px' }}
-                                    required ={Boolean(Other)}
-                                />
-                            </Col>
-                        </Row>
-                    </div>
-                </Panel>
-            </Collapse>
+                        </div>
+                    </Panel>
+                </Collapse>
+            </div>
 
             <br />
             <Button htmlType="submit" type="primary">Save</Button>

@@ -20,7 +20,9 @@ function Service(props) {
                 Manage
             </Button>
             <Button type="default" style={{ border: 'none' }}>
-                Download
+                <a rel="" href="/download">
+                    Download
+                </a>
             </Button>
         </div>
     )
@@ -29,8 +31,7 @@ function Service(props) {
 
     const all = localStorage.getItem('all')
     const allS = JSON.parse(all)
-    const allSum = allS.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-    console.log(allSum)
+    const allSum = allS.sort((a, b) => new Date(b.date) - new Date(a.date))
     allSum.map(e => {
         if (Object.entries(e).length === 12) {
             Object.assign(e, { code: 'opdlist' })
@@ -49,9 +50,6 @@ function Service(props) {
         props.history.push("/");
     }
 
-    function confirm(e) {
-        del()
-    }
     function cancel(e) {
         console.log('Click on No');
     }
@@ -69,7 +67,16 @@ function Service(props) {
             <div style={{ padding: '27px' }}>
                 <Timeline mode="left">
                     {allSum.map((ele) => (
-                        <Timeline.Item color='purple'
+                        <Timeline.Item
+                            color={
+                                ele.code === "opdlist" ? "hotpink"
+                                    :
+                                    ele.code === "nonlist" ? "orange"
+                                        :
+                                        ele.code === "cathlist" ? "blue"
+                                            :
+                                            "green"
+                            }
                             label={ele.date}>
                             <Popover placement='bottom'
                                 title={` ผู้บันทึก(${ele.code}) ${ele.recorder} `}
@@ -82,15 +89,15 @@ function Service(props) {
                                 </Button>
                             </Popover>
 
-                            {/* <Popconfirm
+                            <Popconfirm
                                 title="Are you sure delete this record?"
                                 okText="Yes"
                                 cancelText="No"
-                                onConfirm={confirm}
+                                onConfirm={() => del(ele.id, ele.code)}
                                 onCancel={cancel}
-                            > */}
-                            <DeleteOutlined onClick={() => del(ele.id, ele.code)} />
-                            {/* </Popconfirm> */}
+                            >
+                                <DeleteOutlined />
+                            </Popconfirm>
 
                         </Timeline.Item>
                     ))}
